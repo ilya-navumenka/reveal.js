@@ -16,8 +16,168 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>VueJS</h1>
+					<p>
+						Vue (pronounced /vjuː/, like view) is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex.
+					</p>
+				</section>
+				<section>
+					<h1>How am I?</h1>
+					<div>
+						<ul>
+							<li>Ilya Navumenka</li>
+							<li>As you already understood the topic of this VueJS presentation</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<img src="img/vue.png" style="height: 200px" />
+				</section>
+				<section>
+					<h3>Creating a Vue Application</h3>
+					<p>Every Vue application starts by creating a new application instance with the createApp function:</p>
+					<pre><code data-trim data-noescape>
+						import { createApp } from 'vue'
+
+						const app = createApp({
+ 						 /* root component options */
+						})
+						  </code></pre>
+				</section>
+
+				<section>
+					<h3>The Root Component</h3>
+					<p>The object we are passing into createApp is in fact a component. Every app requires a "root component" that can contain other components as its children.
+						If you are using Single-File Components, we typically import the root component from another file:</p>
+					<pre><code data-trim data-noescape>
+						import { createApp } from 'vue'
+						// import the root component App from a single-file component.
+						import App from './App.vue'
+
+						const app = createApp(App)
+						  </code></pre>
+				</section>
+
+				<section>
+					<h3>Mounting the App</h3>
+					<p>An application instance won't render anything until its .mount() method is called. It expects a "container" argument, which can either be an actual DOM element or a selector string:</p>
+					<pre><code data-trim data-noescape>
+						app.mount('#app')
+						  </code></pre>
+				</section>
+
+				<section>
+					<h3>In-DOM Root Component Template</h3>
+					<p>When using Vue without a build step, we can write our root component's template directly inside the mount container:</p>
+					<pre><code data-trim data-noescape>
+						div id="app"
+							button @click="count++">{{ count }} /button
+						  /div
+						import { createApp } from 'vue'
+
+							const app = createApp({
+							data() {
+								return {
+								count: 0
+								}
+							}
+							})
+
+							app.mount('#app')
+						  </code></pre>
+				</section>
+
+				<section>
+					<h3>App Configurations</h3>
+					<p>The application instance exposes a .config object that allows us to configure a few app-level options, for example, defining an app-level error handler that captures errors from all descendant components:
+					</p>
+					<pre><code data-trim data-noescape>
+						app.config.errorHandler = (err) => {
+							/* handle error */
+						  }
+						  </code></pre>
+				</section>
+
+				<section>
+					<p>The application instance also provides a few methods for registering app-scoped assets. For example, registering a component:
+					</p>
+					<pre><code data-trim data-noescape>
+						app.component('TodoDeleteButton', TodoDeleteButton)
+						  </code></pre>
+					<p>This makes the TodoDeleteButton available for use anywhere in our app. We will discuss registration for components and other types of assets in later sections of the guide. You can also browse the full list of application instance APIs in its API reference.</p>
+				</section>
+
+				<section>
+					<h3>Multiple application instances</h3>
+					<p>You are not limited to a single application instance on the same page. The createApp API allows multiple Vue applications to co-exist on the same page, each with its own scope for configuration and global assets:</p>
+					<pre><code data-trim data-noescape>
+						const app1 = createApp({
+							/* ... */
+						  })
+						  app1.mount('#container-1')
+						  
+						  const app2 = createApp({
+							/* ... */
+						  })
+						  app2.mount('#container-2')
+						  </code></pre>
+				</section>
+
+				<section>
+					<p>If you are using Vue to enhance server-rendered HTML and only need Vue to control specific parts of a large page, avoid mounting a single Vue application instance on the entire page. Instead, create multiple small application instances and mount them on the elements they are responsible for.
+					</p>
+				</section>
+
+				<section>
+					<h3>The Progressive Framework</h3>
+					<p>Vue is a framework and ecosystem that covers most of the common features needed in frontend development. But the web is extremely diverse - the things we build on the web may vary drastically in form and scale. With that in mind, Vue is designed to be flexible and incrementally adoptable. Depending on your use case, Vue can be used in different ways:
+					</p>
+				</section>
+
+				<section>
+					<div>
+						<ul>
+							<li>Enhancing static HTML without a build step</li>
+							<li>Embedding as Web Components on any page</li>
+							<li>Single-Page Application (SPA)</li>
+							<li>Fullstack / Server-Side Rendering (SSR)</li>
+							<li>Jamstack / Static Site Generation (SSG)</li>
+							<li>Targeting desktop, mobile, WebGL, and even the terminal</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h3>Single-File Components</h3>
+					<p>In most build-tool-enabled Vue projects, we author Vue components using an HTML-like file format called Single-File Component (also known as *.vue files, abbreviated as SFC).
+					</p>
+				</section>
+
+				<section>
+					<h3>API Styles</h3>
+					<p>Vue components can be authored in two different API styles: Options API and Composition API.
+					</p>
+				</section>
+
+				<section>
+					<h3>Options API</h3>
+					<p>With Composition API, we define a component's logic using imported API functions. In SFCs, Composition API is typically used with script setup. The setup attribute is a hint that makes Vue perform compile-time transforms that allow us to use Composition API with less boilerplate. For example, imports and top-level variables / functions declared in script setup are directly usable in the template.
+					</p>
+				</section>
+
+				<section>
+					<h3>Which to Choose?</h3>
+				</section>
+
+				<section>
+					<h3>If you are new to Vue, here's our general recommendation</h3>
+				</section>
+
+				<section>
+					<h3>Thank you for your attention</h3>
+				</section>
+				
 			</div>
 		</div>
 
